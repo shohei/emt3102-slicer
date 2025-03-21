@@ -1,4 +1,5 @@
 import struct
+import numpy as np
 
 def read_binary_stl(filename):
     with open(filename, "rb") as f:
@@ -35,11 +36,22 @@ def read_binary_stl(filename):
 stl_file = "your_file.stl"
 triangles = read_binary_stl(stl_file)
 
+xs = np.array([])
+ys = np.array([])
+zs = np.array([])
 # 最初の三角形を表示
 if triangles:
-    for triangle in triangles:
-        print ("Triangle #", triangles.index(triangle))
-        print("  Normal:", triangle[0])
-        print("  Vertex 1:", triangle[1])
-        print("  Vertex 2:", triangle[2])
-        print("  Vertex 3:", triangle[3])
+    for t in triangles:
+        print ("Triangle #", triangles.index(t))
+        print("  Normal:", t[0])
+        print("  Vertex 1:", t[1])
+        print("  Vertex 2:", t[2])
+        print("  Vertex 3:", t[3])
+        xs = np.append(xs,t[1], axis=0)
+        ys = np.append(ys,t[2], axis=0)
+        zs = np.append(zs,t[3], axis=0)
+
+zrange = np.linspace(zs.min(),zs.max(),100) 
+for zp in zrange:
+
+
