@@ -37,8 +37,9 @@ triangles = read_binary_stl(stl_file)
 
 # 最初の三角形を表示
 if triangles:
-    print("First triangle:")
-    print("  Normal:", triangles[0][0])
-    print("  Vertex 1:", triangles[0][1])
-    print("  Vertex 2:", triangles[0][2])
-    print("  Vertex 3:", triangles[0][3])
+    for triangle in triangles:
+        print ("Triangle #", triangles.index(triangle))
+        print("  Normal:", triangle[0])
+        print("  Vertex 1:", triangle[1])
+        print("  Vertex 2:", triangle[2])
+        print("  Vertex 3:", triangle[3])
